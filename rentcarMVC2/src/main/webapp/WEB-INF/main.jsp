@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
 <%-- 	<%
 		String center = request.getParameter("center");
 	
@@ -18,6 +17,7 @@
 		}
 	%> --%>
 
+<div align="center">
 	<table>
 		<%-- top 부분 --%>
 		<tr height="120" align="center">
@@ -28,7 +28,6 @@
 		<%-- center 부분 --%>
 		<tr align="center">
 			<td align="center" width="1000">
-				<c:if test="${center eq null}">
 				  <table>
 					<tr height="500">
 					 <td align="center">
@@ -36,10 +35,6 @@
 					 </td>
 					</tr>
 				  </table>
-				</c:if>
-				<c:if test="${center ne null}">
-				  <c:redirect url="${ctx }${center}"></c:redirect>
-				</c:if>
 			</td>
 		</tr>
 		<%-- bottom 부분 --%>

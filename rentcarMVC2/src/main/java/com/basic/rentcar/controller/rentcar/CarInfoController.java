@@ -1,5 +1,43 @@
 package com.basic.rentcar.controller.rentcar;
 
-public class CarInfoController {
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.basic.rentcar.dao.RentCarDAO;
+import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.vo.Rentcar;
+
+public class CarInfoController implements Controller{
+
+	@Override
+	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		int num = -1;
+		if(request.getParameter("no") == null) {
+			return "main";
+		}
+		
+		num = Integer.parseInt(request.getParameter("no"));
+		Rentcar vo = RentCarDAO.getInstance().getOneRentcarInfo(num);
+		request.setAttribute("vo", vo);
+		
+		int category = vo.getCategory();
+		String temp = "";
+		if(category == 1) {
+			temp = "소형";
+		} else if(category == 2) {
+			temp = "중형";
+		} else {
+			temp = "대형";
+		}
+		
+		request.setAttribute("temp", temp);
+		
+		return "rentcar/rentcarInfo";
+	}
 
 }

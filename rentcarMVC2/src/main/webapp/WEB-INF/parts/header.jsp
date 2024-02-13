@@ -30,7 +30,7 @@
 		</tr>
 		<tr height="50">
 			<td align="center" width="200" bgcolor="darkgray">
-				<font color="white" size="5"><a href="01_carMain.jsp?center=08_carReserveMain.jsp" 
+				<font color="white" size="5"><a href="${ctx }/uploadCarImg.do" 
 				style="text-decoration: none">예 약 하 기</a></font>
 			</td>
 			<td align="center" width="200" bgcolor="darkgray">
