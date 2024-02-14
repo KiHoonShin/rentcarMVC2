@@ -18,6 +18,7 @@ public class ReservateCarController implements Controller{
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		// 렌트 금액 구하기
 		int no = Integer.parseInt(request.getParameter("no"));
 		int qty = Integer.parseInt(request.getParameter("qty"));
 		int dday = Integer.parseInt(request.getParameter("dday"));
@@ -26,17 +27,21 @@ public class ReservateCarController implements Controller{
 		
 		int usein = Integer.parseInt(request.getParameter("usein"));
 		int usewifi = Integer.parseInt(request.getParameter("usewifi"));
+		int usenavi = Integer.parseInt(request.getParameter("usenavi"));
 		int useseat = Integer.parseInt(request.getParameter("useseat"));
 		
-		usein = usein == 1 ? 10000 : 0;
-		usewifi = usewifi == 1 ? 10000 : 0;
-		useseat = useseat == 1 ? 10000 : 0;
+		int useinPrice;
+		int usewifiPrice;
+		int useseatPrice;
+		useinPrice = usein == 1 ? 10000 : 0;
+		usewifiPrice = usewifi == 1 ? 10000 : 0;
+		useseatPrice = useseat == 1 ? 10000 : 0;
 		
-		System.out.println("usein = " + usein + "  usewifi = " + usewifi + "  useseat = " + useseat);
+		System.out.println("usein = " + useinPrice + "  usewifi = " + usewifiPrice + "  useseat = " + useseatPrice);
 		
 		int totalCar = price * qty * dday;
 		
-		int totalOption = qty * dday * (usein + usewifi + useseat);
+		int totalOption = qty * dday * (useinPrice + usewifiPrice + useseatPrice);
 		
 		int totalPrice = totalCar + totalOption;
 		
@@ -49,6 +54,15 @@ public class ReservateCarController implements Controller{
 		request.setAttribute("img", img);
 		
 		// 여기서 reserveCar sql 추가해야함
+		
+		// car reserve sql에 값 넣기
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("log");
+		String rday = request.getParameter("rday");
+		
+		Reservation r = new Reservation(no, id, qty, dday, rday, usein, usewifi, usein, useseat);
+		
+		ReservationDAO.getInstance().addCarReserve(r);
 		
 		return "rentcar/carReserveResult";
 	}

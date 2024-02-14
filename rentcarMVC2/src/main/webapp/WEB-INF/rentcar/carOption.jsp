@@ -78,7 +78,7 @@
 				<td align="center" colspan="2">
 				<input type="hidden" name="no" value="${no }">
 				<input type="hidden" name="qty" value="${qty}"> 
-				<input type="hidden" name="qty" value="${price}"> 
+				<input type="hidden" name="price" value="${price}"> 
 				<input type="hidden" name="img" value="${img}"> 
 				<input type="submit" value="차량예약하기" /></td>
 			</tr>

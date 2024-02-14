@@ -70,6 +70,32 @@ public class ReservationDAO {
 		return list;
 	}
 	
+	public void addCarReserve(Reservation r) {
+		getConnect();
+		String sql = "insert into carreserve values(null,?,?,?,?,?,?,?,?,?)";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, r.getNo());
+			ps.setString(2, r.getId());
+			ps.setInt(3, r.getQty());
+			ps.setInt(4, r.getDday());
+			ps.setString(5, r.getRday());
+			ps.setInt(6, r.getUsein());
+			ps.setInt(7, r.getUsewifi());
+			ps.setInt(8, r.getUsenavi());
+			ps.setInt(9, r.getUseseat());
+			
+			if(ps.executeUpdate() > 0) {
+				// 업데이트 메서드 만들어서 넣기( qty 수정해야함)
+				System.out.println("차량 예약 완료");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+	}
+	
 	
 	private void dbClose() {
 		if(ps != null)
