@@ -19,7 +19,8 @@
 			<td align="center" width="200">
 			<c:if test="${log eq null }">
 				GUEST님
-				<button onclick="location.href='${ctx}/loginCheck.do'"> 로그인 </button>
+				<button onclick="location.href='${ctx}/loginCheck.do'"> 로그인 </button>&nbsp;&nbsp;
+				<button onclick="location.href='${ctx}/joinUser.do'"> 회원가입 </button>
 				</c:if>
 	
 			<c:if test = "${log ne null}">
@@ -34,7 +35,7 @@
 				style="text-decoration: none">예 약 하 기</a></font>
 			</td>
 			<td align="center" width="200" bgcolor="darkgray">
-				<font color="white" size="5"><a href="01_carMain.jsp?center=14_carReserveView.jsp" 
+				<font color="white" size="5"><a href="${ctx }/viewReserve.do" 
 				style="text-decoration: none">예 약 확 인</a></font>
 			</td>
 			<td align="center" width="200" bgcolor="darkgray">

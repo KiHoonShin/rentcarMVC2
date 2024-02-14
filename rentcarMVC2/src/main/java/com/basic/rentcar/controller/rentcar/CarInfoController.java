@@ -23,6 +23,10 @@ public class CarInfoController implements Controller{
 		
 		num = Integer.parseInt(request.getParameter("no"));
 		Rentcar vo = RentCarDAO.getInstance().getOneRentcarInfo(num);
+		if(vo.getTotal_qty() < 1) {
+			System.out.println("이 차량은 모두 대여중입니다.");
+			return "main";
+		}
 		request.setAttribute("vo", vo);
 		
 		int category = vo.getCategory();

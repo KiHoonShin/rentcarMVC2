@@ -18,8 +18,7 @@
 		<%-- center 부분 --%>
 		<tr align="center">
 
-		<form action="01_carMain.jsp?center=11_carOptionSelect.jsp"
-			method="post">
+		<form action="${ctx }/carOption.do"	method="post">
 
 			<table>
 				<tr height="100">
@@ -40,7 +39,8 @@
 				</tr>
 				<tr>
 					<td width="250" align="center">차량수량</td>
-					<td width="250" align="center"><select name="qty">
+					<td width="250" align="center">
+					<select name="qty">
 					<c:forEach var ="i" begin="1" end="${vo.total_qty}">
 						<c:if test = "${i eq 1}">
 							<option value="1" selected >1</option>
@@ -66,10 +66,11 @@
 				<tr>
 					<td width="250" align="center">
 					
-						<%-- 이전 차량에 관한 정보 --%> <input type="hidden" name="no"
-						value="${vo.no }" /> <input type="hidden" name="img"
-						value="${vo.img }" /> <input type="submit"
-						value="옵션선택후 렌트 예약 하기" />
+						<%-- 이전 차량에 관한 정보 --%> 
+						<input type="hidden" name="no" value="${vo.no }" /> 
+						<input type="hidden" name="img"	value="${vo.img }" /> 
+						<input type="hidden" name="price" value="${vo.price }" /> 
+						<input type="submit" value="옵션선택후 렌트 예약 하기" />
 						
 					</td>
 				</tr>

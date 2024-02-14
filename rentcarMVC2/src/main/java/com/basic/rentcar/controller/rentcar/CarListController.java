@@ -26,10 +26,11 @@ public class CarListController implements Controller{
 		} else {
 			temp = "대형";
 		}
-		System.out.println("category = " + category + "  temp = " + temp);
 		ArrayList<Rentcar> categoryCar = RentCarDAO.getInstance().getCategoryCar(category);
 		
 		int count = categoryCar.size();
+		
+		System.out.println("category = " + category + "  temp = " + temp + " count = " +count);
 		
 		request.setAttribute("temp", temp);
 		request.setAttribute("count", count);

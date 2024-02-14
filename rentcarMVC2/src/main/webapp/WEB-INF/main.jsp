@@ -7,15 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- 	<%
-		String center = request.getParameter("center");
-	
-		// 처음 실행시에는 center값이 넘어오지 않기에
-		// null처리 해줌
-		if(center == null){	
-			center = "04_center.jsp";		// default center값을 부여
-		}
-	%> --%>
 
 <div align="center">
 	<table>

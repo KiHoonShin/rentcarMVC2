@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.basic.rentcar.vo.User;
+
 public class UserDAO {
 
 	private UserDAO() {}
@@ -53,7 +55,53 @@ public class UserDAO {
 		return null;
 	}
 	
+	public int insertUser(String id, String pw, String email, String tel, String hobby, String job, String age, String info) {
+		getConnect();
+		String sql = "insert into member values(null,?,?,?,?,?,?,?,?)";
+		int cnt = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, pw);
+			ps.setString(3, email);
+			ps.setString(4, tel);
+			ps.setString(5, hobby);
+			ps.setString(6, job);
+			ps.setString(7, age);
+			ps.setString(8, info);
+			cnt = ps.executeUpdate();
+			System.out.println("회원 가입 성공 = " + cnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return cnt;
+	}
 	
+	public int joinUser(User user) {
+		getConnect();
+		String sql = "insert into member values(null,?,?,?,?,?,?,?,?)";
+		int cnt = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getId());
+			ps.setString(2, user.getPw());
+			ps.setString(3, user.getEmail());
+			ps.setString(4, user.getTel());
+			ps.setString(5, user.getHobby());
+			ps.setString(6, user.getJob());
+			ps.setString(7, user.getAge());
+			ps.setString(8, user.getInfo());
+			cnt = ps.executeUpdate();
+			System.out.println("회원 가입 성공 = " + cnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return cnt;
+	}
 	
 	
 	

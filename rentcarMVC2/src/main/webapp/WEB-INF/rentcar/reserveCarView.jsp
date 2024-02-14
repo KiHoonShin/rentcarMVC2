@@ -46,20 +46,19 @@
 				<td align="center" colspan="3"><font size="6" color="gray">${temp}
 						자동차</font></td>
 			</tr>
-			<c:forEach var = "i" begin = "1" end = "${count }">
-			<c:var= "vo" items="${categoryCar }"/>
-				<c:if test="${(i % 3) eq 1  }">
+			  <c:forEach var= "vo" items="${categoryCar }" varStatus = "status">
+				 <c:if test="${(status.count % 3) eq 1  }"> 
 				<tr height="220">
+				 </c:if>
 				<td width="333" align="center">
 				<a href="${ctx }/carInfo.do?no=${vo.no }">
 						<img alt="" src="img/${vo.img }" width="300" height="200">
 				</a>
 				<p>
 						<font size="3" color="gray"><b>차량명 | ${vo.name }</b></font></td>
+			  </c:forEach>
 				</tr>
 				</table>
-				</c:if>
-			</c:forEach>
 		
 	</c:if>
 	<!-- ================================================== -->
