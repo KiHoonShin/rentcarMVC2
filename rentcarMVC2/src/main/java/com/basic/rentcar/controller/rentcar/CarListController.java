@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
@@ -17,6 +18,23 @@ public class CarListController implements Controller{
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		String ctx = request.getContextPath();
+		if(session.getAttribute("log") == null) {
+			return "redirect:"+ctx+"/loginCheck.do";
+		}
+		ArrayList<Rentcar> mainImgList = RentCarDAO.getInstance().mainRentCarListImg();
+		request.setAttribute("mainImgList", mainImgList);
+		
+		ArrayList<Rentcar> allRentcarList = RentCarDAO.getInstance().allRentcarList();
+		request.setAttribute("allRentcarList", allRentcarList);
+		if(request.getParameter("search")!= null) {
+			String search = request.getParameter("search");
+			System.out.println("search = " + search);
+			request.setAttribute("search", search);
+		}
+		
+		if(request.getParameter("category") != null) {
 		int category = Integer.parseInt(request.getParameter("category"));
 		String temp = "";
 		if(category == 1) {
@@ -35,7 +53,7 @@ public class CarListController implements Controller{
 		request.setAttribute("temp", temp);
 		request.setAttribute("count", count);
 		request.setAttribute("categoryCar", categoryCar);
-		
+		}
 		return "rentcar/reserveCarView";
 	}
 

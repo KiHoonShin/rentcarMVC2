@@ -1,15 +1,20 @@
 package com.basic.rentcar.controller.rentcar;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.dao.ReservationDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.vo.Rentcar;
 import com.basic.rentcar.vo.Reservation;
 
 public class ReservateCarController implements Controller{
@@ -63,6 +68,39 @@ public class ReservateCarController implements Controller{
 		Reservation r = new Reservation(no, id, qty, dday, rday, usein, usewifi, usein, useseat);
 		
 		ReservationDAO.getInstance().addCarReserve(r);
+		
+		Rentcar rentcar = RentCarDAO.getInstance().getOneRentcarInfo(no);
+		// 현재 총 수량에서 대여 수량 차감하기
+		int totalQTY = rentcar.getTotal_qty();
+		System.out.println("총 수량 = " + totalQTY);
+		//int delQTY = totalQTY-qty;
+		// 업데이트 쿼리 만들기.
+		RentCarDAO.getInstance().updateRentCarQty(no, qty);
+		
+		//System.out.println("차감 후 수량 = " + delQTY);
+		
+		// 날짜 구해서 비교하기
+		Date nowDate = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+		try {
+			nowDate = sdf.parse(sdf.format(nowDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		System.out.println("nowDate = " + nowDate);
+		
+		Date d2 = new Date();
+		try {
+			d2 = sdf.parse(rday);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		boolean result = d2.before(nowDate);
+		if(result) {
+			System.out.println("선택한 날짜가 현재보다 이전임");
+		} else {
+			System.out.println("선택한 날짜가 현재보다 이후임");
+		}
 		
 		return "rentcar/carReserveResult";
 	}

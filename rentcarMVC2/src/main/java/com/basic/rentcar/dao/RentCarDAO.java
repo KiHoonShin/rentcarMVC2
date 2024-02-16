@@ -138,6 +138,69 @@ public class RentCarDAO {
 		return list;
 	}
 	
+	public void updateRentCarQty(int no, int qty) {
+		getConnect();
+		String sql = "update rentcar set total_qty = total_qty - ? where no = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, qty);
+			ps.setInt(2, no);
+			if(ps.executeUpdate() > 0) {
+				System.out.println("수량 업데이트 완료");
+			} else {
+				System.out.println("수량 업데이트 실패");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+	}
+	
+	public void backQty(int qty, int no) {
+		getConnect();
+		String sql = "update rentcar set total_qty = total_qty + ? where no = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, qty);
+			ps.setInt(2, no);
+			if(ps.executeUpdate() > 0) {
+				System.out.println("수량 되돌리기 완료");
+			} else {
+				System.out.println("수량 되돌리기 실패");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+	}
+	
+	public void insertCar(Rentcar r) {
+		getConnect();
+		String sql = "insert into rentcar values(null,?,?,?,?,?,?,?,?)";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, r.getName());
+			ps.setInt(2, r.getCategory());
+			ps.setInt(3, r.getPrice());
+			ps.setInt(4, r.getUsepeople());
+			ps.setInt(5, r.getTotal_qty());
+			ps.setString(6, r.getCompany());
+			ps.setString(7, r.getImg());
+			ps.setString(8, r.getInfo());
+			if(ps.executeUpdate() > 0) {
+				System.out.println("등록 성공");
+			} else {
+				System.out.println("등록 실패");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+	}
+	
 	private void dbClose() {
 		if(ps != null)
 			try {

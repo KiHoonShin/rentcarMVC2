@@ -20,6 +20,7 @@
 	<tr align="center">
 	
 	<c:if test = "${categoryCar eq null }">
+	<c:if test ="${search eq null }">
 	<table>
 		<tr height="60">
 		<td align="center" colspan="3">
@@ -37,8 +38,27 @@
 		</c:forEach>
 		</tr>
 	</table>
+	 </c:if>
 	</c:if>
-	
+			<c:if test = "${search ne null }"> 
+				<table>
+				<tr height="60">
+				<td align="center" colspan="3"><font size="6" color="gray"> 전체 렌트카 보기 </font></td>
+				</tr>
+				 <c:forEach var= "vo" items="${allRentcarList }" varStatus = "status">
+				 <c:if test="${(status.count % 3) eq 1  }"> 
+				<tr height="220">
+				 </c:if>
+				<td width="333" align="center">
+				<a href="${ctx }/carInfo.do?no=${vo.no }">
+						<img alt="" src="img/${vo.img }" width="300" height="200">
+				</a>
+				<p>
+						<font size="3" color="gray"><b>차량명 | ${vo.name }</b></font></td>
+			  </c:forEach>
+				</tr>
+				</table>
+		</c:if>
 	<c:if test ="${categoryCar ne null }">
 		
 			<table>
@@ -77,7 +97,7 @@
 		<input type="submit" value="검색" />&nbsp;&nbsp;
 	</form>
 	<%-- button은 form 밖에 위치시키기 --%>
-	<button onclick="location.href='01_carMain.jsp?center=09_carAllList.jsp'">전체 검색</button>
+	<button onclick="location.href='${ctx}/carList.do?search=all'">전체 검색</button>
 	
 	</tr>
 		<%-- bottom 부분 --%>

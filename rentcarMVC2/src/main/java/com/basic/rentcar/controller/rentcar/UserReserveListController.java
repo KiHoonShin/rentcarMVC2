@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.dao.ReservationDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.vo.Rentcar;
 import com.basic.rentcar.vo.Reservation;
 
 public class UserReserveListController implements Controller{
@@ -27,7 +29,11 @@ public class UserReserveListController implements Controller{
 		
 		ArrayList<Reservation> list = ReservationDAO.getInstance().getReserveList(id);
 		
-		request.setAttribute("list", list);
+		request.setAttribute("list", list); // 예약 리스트
+		
+		ArrayList<Rentcar> rentcarList = RentCarDAO.getInstance().allRentcarList();
+		
+		request.setAttribute("rentcarList", rentcarList); //렌트카 리스트
 		
 		return "rentcar/userReserveList";
 		

@@ -26,12 +26,15 @@
 			<c:if test = "${log ne null}">
 				${log}님
 				<button onclick="location.href='${ctx}/loginCheck.do'"> 로그아웃 </button> 
+			<c:if test = "${log == 'admin' }">
+			<button onclick="location.href='${ctx}/insertCar.do'"> 차량 등록 </button> 
+			</c:if>
 			</c:if>
 			</td>
 		</tr>
 		<tr height="50">
 			<td align="center" width="200" bgcolor="darkgray">
-				<font color="white" size="5"><a href="${ctx }/uploadCarImg.do" 
+				<font color="white" size="5"><a href="${ctx }/carList.do" 
 				style="text-decoration: none">예 약 하 기</a></font>
 			</td>
 			<td align="center" width="200" bgcolor="darkgray">

@@ -41,20 +41,30 @@
 			
 	<c:forEach var = "vo" items="${list}">
 		<tr height="70">	
+			<!-- vo.no == rentcar no 일때 rentcar img 출력 -->
+			<c:forEach var = "rentcar" items = "${rentcarList }">
+			<c:if test = "${vo.no eq rentcar.no }">
 			<td height="70" align="center">
-				<img src="img/${vo.img }"  width="120" height="70">
+				<img src="img/${rentcar.img}"  width="120" height="70">
 			</td>
-			<td width="100" align="center">${vo.name }</td>
+			<td width="100" align="center">${rentcar.name }</td>
+			</c:if>
+			</c:forEach>
 			<td width="150" align="center">${vo.rday }</td>
 			<td width="150" align="center">${vo.dday }</td>
-			<td width="100" align="center">${vo.price } 원</td>
+			<c:forEach var = "rentcar" items = "${rentcarList }">
+			<c:if test = "${vo.no eq rentcar.no }">
+			<td width="100" align="center">${rentcar.price } 원</td>
+			</c:if>
+			</c:forEach>
+			<%-- <td width="100" align="center">${vo.price } 원</td> --%>
 			<td width="60" align="center">${vo.qty }</td>
 			<td width="100" align="center">${vo.usein }</td>
 			<td width="60" align="center">${vo.usewifi }</td>
 			<td width="60" align="center">${vo.usenavi }</td>
-			<td width="60" align="center">${vo.userseat}</td>
+			<td width="60" align="center">${vo.useseat}</td>
 			<td width="90" align="center">
-				<button onclick="location.href='/deleteCar.do?resSeq=${vo.reserve_seq }&qty=${vo.qty }&no=${vo.no }'">삭제</button>
+				<button onclick="location.href='${ctx}/deleteCar.do?resSeq=${vo.reserve_seq }&qty=${vo.qty }&no=${vo.no }'">삭제</button>
 			</td>
 			
 		</tr>

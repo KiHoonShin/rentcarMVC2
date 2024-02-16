@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.basic.rentcar.vo.Rentcar;
 import com.basic.rentcar.vo.Reservation;
 
 public class ReservationDAO {
@@ -41,6 +42,7 @@ public class ReservationDAO {
 	public ArrayList<Reservation> getReserveList(String id2){
 		ArrayList<Reservation> list = new ArrayList<Reservation>();
 		Reservation r = null;
+		Rentcar rentcar = null;
 		getConnect();
 		String sql = "select * from rentcar c1 , carreserve c2 where c2.id = ? and c1.no = c2.no";
 		try {
@@ -50,8 +52,10 @@ public class ReservationDAO {
 			
 			while(rs.next()) {
 				r = new Reservation();
+				rentcar = new Rentcar();
 				r.setReserve_seq(rs.getInt("reserve_seq"));
 				r.setNo(rs.getInt("no"));
+				rentcar.setImg(rs.getString("img"));
 				//String id = rs.getString("id");
 				r.setQty(rs.getInt("qty"));
 				r.setDday(rs.getInt("dday"));
@@ -96,6 +100,23 @@ public class ReservationDAO {
 		}
 	}
 	
+	public void deleteReserveCar(int reserve_seq) {
+		getConnect();
+		String sql = "delete from carreserve where reserve_seq = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reserve_seq);
+			if(ps.executeUpdate() > 0) {
+				System.out.println("예약된 차 삭제 완료");
+			} else {
+				System.out.println("예약된 차 삭제 실패");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+	}
 	
 	private void dbClose() {
 		if(ps != null)
