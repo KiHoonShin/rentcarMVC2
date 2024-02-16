@@ -1,10 +1,13 @@
 package com.basic.rentcar.dao;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletResponse;
 
 import com.basic.rentcar.vo.User;
 
@@ -135,9 +138,8 @@ public class UserDAO {
 		} finally {
 			dbClose();
 		}
-		
-		
 	}
+	
 	
 	private void dbClose() {
 		if(conn != null)

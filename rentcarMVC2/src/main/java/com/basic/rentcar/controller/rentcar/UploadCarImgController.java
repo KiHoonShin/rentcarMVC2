@@ -26,6 +26,8 @@ public class UploadCarImgController implements Controller{
 		
 //		String saveDirectory = request.getServletContext().getRealPath("/img");
 		String saveDirectory = "C:\\rentcarMVC2\\rentcarMVC2\\src\\main\\webapp\\img";
+		// 주소를 이렇게 설정하려면 톰캣 server.xml 에서 외부 링크 설정해야함 꼭
+		
 		System.out.println("saveDir = " + saveDirectory);
 		
 		Path saveDirPath = Paths.get(saveDirectory);

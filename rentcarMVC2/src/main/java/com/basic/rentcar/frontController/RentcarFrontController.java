@@ -26,7 +26,7 @@ public class RentcarFrontController extends HttpServlet{
 		HandlerMapping mapping = new HandlerMapping();
 		controller = mapping.getController(command);
 		nextPage = controller.requestHandler(request, response);
-		
+		System.out.println("nextPage = " + nextPage);
 		if(nextPage != null) {
 			if(nextPage.indexOf("redirect:") != -1) {
 				response.sendRedirect(nextPage.split(":")[1]);
