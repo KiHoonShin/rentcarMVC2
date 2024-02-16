@@ -103,7 +103,41 @@ public class UserDAO {
 		return cnt;
 	}
 	
+	public boolean isValidId(String id) {
+		getConnect();
+		String sql = "select pw from member where id = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			return rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return false;
+	}
 	
+	public void deleteUser(String id) {
+		getConnect();
+		String sql = "delete from member where id = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			if(ps.executeUpdate()>0) {
+				System.out.println(id+" 회원 삭제 완료");
+			} else {
+				System.out.println("삭제 실패");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		
+		
+	}
 	
 	private void dbClose() {
 		if(conn != null)

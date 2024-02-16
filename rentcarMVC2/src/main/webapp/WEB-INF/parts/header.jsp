@@ -19,13 +19,14 @@
 			<td align="center" width="200">
 			<c:if test="${log eq null }">
 				GUEST님
-				<button onclick="location.href='${ctx}/loginCheck.do'"> 로그인 </button>&nbsp;&nbsp;
+				<button onclick="location.href='${ctx}/logInOut.do'"> 로그인 </button>&nbsp;&nbsp;
 				<button onclick="location.href='${ctx}/joinUser.do'"> 회원가입 </button>
 				</c:if>
 	
 			<c:if test = "${log ne null}">
 				${log}님
-				<button onclick="location.href='${ctx}/loginCheck.do'"> 로그아웃 </button> 
+				<button onclick="location.href='${ctx}/logInOut.do'"> 로그아웃 </button> 
+				<button onclick="location.href='${ctx}/deleteUser.do'"> 회원탈퇴 </button>
 			<c:if test = "${log == 'admin' }">
 			<button onclick="location.href='${ctx}/insertCar.do'"> 차량 등록 </button> 
 			</c:if>

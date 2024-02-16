@@ -21,7 +21,10 @@ public class LoginOutController implements Controller{
 		
 		if(session.getAttribute("log") != null) {
 //			request.setAttribute("center", "/logInOut.do");
-			return "main";
+			// 로그아웃 시키기
+			session.removeAttribute("log");
+			System.out.println("로그아웃 성공");
+			return "redirect:"+ctx+"/main.do";
 		}
 		
 		if(request.getParameter("id") == null) {
@@ -34,7 +37,8 @@ public class LoginOutController implements Controller{
 		String dbPw = UserDAO.getInstance().checkingId(id);
 		System.out.println("dbPw = " + dbPw);
 		if(dbPw == null || dbPw.equals(pw) == false) {
-			return "redirect:"+ctx+"/loginCheck.do";
+			System.out.println("비밀번호 오류");
+			return "user/login";
 		} 
 		
 		session.setAttribute("log", id);

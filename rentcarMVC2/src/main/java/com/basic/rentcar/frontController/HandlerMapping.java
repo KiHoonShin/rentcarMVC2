@@ -10,6 +10,7 @@ import com.basic.rentcar.controller.rentcar.ReservateCarController;
 import com.basic.rentcar.controller.rentcar.SelectCarOptionController;
 import com.basic.rentcar.controller.rentcar.UploadCarImgController;
 import com.basic.rentcar.controller.rentcar.UserReserveListController;
+import com.basic.rentcar.controller.user.DeleteUserController;
 import com.basic.rentcar.controller.user.JoinUserController;
 import com.basic.rentcar.controller.user.LoginCheckController;
 import com.basic.rentcar.controller.user.LoginOutController;
@@ -33,6 +34,7 @@ public class HandlerMapping {
 		mappings.put("/viewReserve.do", new UserReserveListController());
 		mappings.put("/deleteCar.do", new DeleteResController());
 		mappings.put("/insertCar.do", new InsertCarController());
+		mappings.put("/deleteUser.do", new DeleteUserController());
 		
 	}
 	
