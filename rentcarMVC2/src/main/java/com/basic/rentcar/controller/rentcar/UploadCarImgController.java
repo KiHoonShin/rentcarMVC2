@@ -24,7 +24,8 @@ public class UploadCarImgController implements Controller{
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String saveDirectory = request.getServletContext().getRealPath("/img");
+//		String saveDirectory = request.getServletContext().getRealPath("/img");
+		String saveDirectory = "C:\\rentcarMVC2\\rentcarMVC2\\src\\main\\webapp\\img";
 		System.out.println("saveDir = " + saveDirectory);
 		
 		Path saveDirPath = Paths.get(saveDirectory);

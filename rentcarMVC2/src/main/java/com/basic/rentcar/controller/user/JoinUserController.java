@@ -22,6 +22,8 @@ public class JoinUserController implements Controller{
 		 * if(request.getParameter("id") == null) { //이거 말고 userdao 에서 int값 받아오고 그게 -면
 		 * 다시 되돌아가기 }
 		 */
+		
+		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
@@ -32,7 +34,7 @@ public class JoinUserController implements Controller{
 		String info = request.getParameter("info");
 		
 		if(request.getParameter("id") == null) {
-			System.out.println("회원 가입 실패 ");
+			System.out.println("회원 가입하러 jsp로 이동");
 			return "user/join";
 		} else {
 			User u = new User(0, id, pw, email, tel, hobby, job, age, info) ;

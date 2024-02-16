@@ -27,6 +27,7 @@ public class LoginCheckController implements Controller{
 //				session.removeAttribute("log");
 //			}
 			String id = request.getParameter("id");
+			System.out.println("id = " + id);
 			String data = UserDAO.getInstance().isValidId(id) ? "notValid" : "valid";
 			
 			response.getWriter().print(data);

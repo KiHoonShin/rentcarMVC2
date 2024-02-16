@@ -26,42 +26,42 @@
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 아이디 </td>
-				<td width="180"> <input type="text" name="id" size="15" required /> 
+				<td width="180"> <input type="text" id="id" name="id" size="15" required /> 
 				<input type="button" value="중복체크" id="checkId" class="btn btn-outline-dark"></td>
 				
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 패스워드 </td>
-				<td width="180"> <input type="password" name="pw" size="15" required/> </td>
+				<td width="180"> <input type="password" id="pw" name="pw" size="15" required/> </td>
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 이메일 </td>
-				<td width="180"> <input type="email" name="email" size="15" required/> </td>
+				<td width="180"> <input type="email" id="email" name="email" size="15" required/> </td>
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 연락처 </td>
-				<td width="180"> <input type="tel" name="tel" size="15" required/> </td>
+				<td width="180"> <input type="tel" id="tel" name="tel" size="15" required/> </td>
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 취미 </td>
-				<td width="180"> <input type="text" name="hobby" size="15" required/> </td>
+				<td width="180"> <input type="text" id="hobby" name="hobby" size="15" required/> </td>
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 직업 </td>
-				<td width="180"> <input type="text" name="job" size="15" required/> </td>
+				<td width="180"> <input type="text" id="job" name="job" size="15" required/> </td>
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 나이 </td>
-				<td width="180"> <input type="text" name="age" size="15" required/> </td>
+				<td width="180"> <input type="text" id="age" name="age" size="15" required/> </td>
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 정보 </td>
-				<td width="180"> <input type="text" name="info" size="15" required/> </td>
+				<td width="180"> <input type="text" id="info" name="info" size="15" required/> </td>
 			</tr>
 			
 			<tr height="40">
 				<td align="center" colspan="2">
-					<input type="submit" value="회원가입" />
+					<input type="submit" value="회원가입" onclick="validCheck(form)"/>
 				</td>
 			</tr>
 		</table>
@@ -86,9 +86,9 @@
 			form.id.focus();
 			return false;
 		}
-		if(!form.pass.value.trim()){
+		if(!form.pw.value.trim()){
 			alert("패스워드를 입력해주세요");
-			form.id.focus();
+			pw.id.focus();
 			return false;
 		}	
 		if(!form.email.value.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)){
@@ -157,7 +157,7 @@
 			headers : {
 				"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 			},
-			body : "id = " + id,
+			body : "id=" + id,
 		})
 		.then(response => response.text())
 		.then(getResult)
