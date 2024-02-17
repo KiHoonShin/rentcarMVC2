@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.UserDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.util.alertUtil;
 
 public class LoginOutController implements Controller{
 
@@ -25,7 +26,9 @@ public class LoginOutController implements Controller{
 			// 로그아웃 시키기
 			session.removeAttribute("log");
 			System.out.println("로그아웃 성공");
-			return "redirect:"+ctx+"/main.do";
+//			return "redirect:"+ctx+"/main.do";
+			alertUtil.alertAndGo(response, "로그아웃 성공", ctx+"/main.do");
+			return null;
 		}
 		
 		if(request.getParameter("id") == null) {
@@ -39,12 +42,15 @@ public class LoginOutController implements Controller{
 		System.out.println("dbPw = " + dbPw);
 		if(dbPw == null || dbPw.equals(pw) == false) {
 			System.out.println("비밀번호 오류");
-			return "user/login";
+			alertUtil.alertAndBack(response, "아이디와 비밀번호가 일치하지 않습니다");
+//			return "user/login";
+			return null;
 		} 
 		
 		session.setAttribute("log", id);
-		
-		return "redirect:"+ctx+"/main.do";
+		alertUtil.alertAndGo(response, "로그인 성공", ctx+"/main.do");
+//		return "redirect:"+ctx+"/main.do";
+		return null;
 	}
 
 }

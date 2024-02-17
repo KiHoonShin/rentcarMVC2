@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.util.alertUtil;
 import com.basic.rentcar.vo.Rentcar;
 
 public class CarInfoController implements Controller{
@@ -24,8 +25,10 @@ public class CarInfoController implements Controller{
 		num = Integer.parseInt(request.getParameter("no"));
 		Rentcar vo = RentCarDAO.getInstance().getOneRentcarInfo(num);
 		if(vo.getTotal_qty() < 1) {
+			alertUtil.alertAndBack(response, "이 차량은 모두 대여중입니다");
 			System.out.println("이 차량은 모두 대여중입니다.");
-			return "main";
+//			return "main";
+			return null;
 		}
 		request.setAttribute("vo", vo);
 		

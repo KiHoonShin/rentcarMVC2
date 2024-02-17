@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.util.alertUtil;
 import com.basic.rentcar.vo.Rentcar;
 
 public class CarListController implements Controller{
@@ -20,9 +21,9 @@ public class CarListController implements Controller{
 		
 		HttpSession session = request.getSession();
 		String ctx = request.getContextPath();
-		if(session.getAttribute("log") == null) {
-			return "redirect:"+ctx+"/loginCheck.do";
-		}
+//		if(session.getAttribute("log") == null) {
+//			return "redirect:"+ctx+"/loginCheck.do";
+//		}
 		ArrayList<Rentcar> mainImgList = RentCarDAO.getInstance().mainRentCarListImg();
 		request.setAttribute("mainImgList", mainImgList);
 		

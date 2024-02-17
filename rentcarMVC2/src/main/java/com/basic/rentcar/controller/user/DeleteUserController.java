@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.UserDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.util.alertUtil;
 
 public class DeleteUserController implements Controller {
 
@@ -21,7 +22,9 @@ public class DeleteUserController implements Controller {
 		UserDAO.getInstance().deleteUser(id);
 		
 		String ctx = request.getContextPath();
-		return "redirect:"+ctx+"/main.do";
+		alertUtil.alertAndGo(response, "회원 탈퇴 완료", ctx+"/main.do");
+//		return "redirect:"+ctx+"/main.do";
+		return null;
 	}
 
 }

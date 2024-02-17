@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.dao.ReservationDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.util.alertUtil;
+import com.basic.rentcar.vo.Rentcar;
 import com.basic.rentcar.vo.Reservation;
 
 public class DeleteResController implements Controller{
@@ -24,8 +26,14 @@ public class DeleteResController implements Controller{
 		RentCarDAO.getInstance().backQty(qty, no);
 		
 		String ctx = request.getContextPath();
-		return "redirect:"+ctx+"/viewReserve.do";
-//		return "rentcar/userReserveList";
+		
+		Rentcar r = RentCarDAO.getInstance().getOneRentcarInfo(no);
+		
+		String carName = r.getName();
+		
+		alertUtil.alertAndGo(response, carName +" 차량 예약이 취소되었습니다", ctx+"/viewReserve.do");
+//		return "redirect:"+ctx+"/viewReserve.do";
+		return null;
 	}
 
 }

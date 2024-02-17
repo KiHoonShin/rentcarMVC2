@@ -26,7 +26,7 @@
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 아이디 </td>
-				<td width="180"> <input type="text" id="id" name="id" size="15" required /> 
+				<td width="180"> <input type="text" id="id" name="id" size="15" autofocus required /> 
 				<input type="button" value="중복체크" id="checkId" class="btn btn-outline-dark"></td>
 				
 			</tr>
@@ -61,7 +61,7 @@
 			
 			<tr height="40">
 				<td align="center" colspan="2">
-					<input type="submit" value="회원가입" onclick="validCheck(form)"/>
+					<input type="button" value="회원가입" onclick="validCheck(form)"/>
 				</td>
 			</tr>
 		</table>

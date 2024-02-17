@@ -24,6 +24,24 @@
 				</td>
 			</tr>
 		 </table>
+		 <c:if test = "${size eq 0 }">
+		 <table>
+		 				<tr height="100">
+				<td align="center" colspan="11"> 
+					<font size="6" color="black"> 예약된 차량이 없습니다 </font> <br>
+<%-- 					<button onclick="location.href='${ctx}/main.do'">홈</button>&nbsp;&nbsp;
+					<button onclick="location.href='${ctx}/carList.do'">예약하기</button> --%>
+				</td>
+			</tr>
+			<tr>
+					<td align="center" colspan="11">
+						<input type="button" value="홈" onclick="location.href='${ctx}/main.do'" /> &nbsp;&nbsp;&nbsp;
+						<input type="button" value="차량 예약하기" onclick="location.href='${ctx}/carList.do'" />
+					</td>
+			</tr>
+		</table>
+		 </c:if>
+		 <c:if test="${size > 0 }">
 		<table border="1">
 			<tr height="40">
 				<td width="150" align="center"> 이미지 </td>
@@ -70,7 +88,7 @@
 		</tr>
 	</c:forEach>
 		</table>
-
+	</c:if>
 		</tr>
 		<%-- bottom 부분 --%>
 		<tr height="100" align="center">
