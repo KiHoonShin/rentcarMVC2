@@ -33,7 +33,7 @@
 			<a href="${ctx }/carInfo.do?no=${vo.no}">
 				<img alt="" src="img/${vo.img}" width="300" height="220">
 			</a><p>
-			차량명 : ${vo.name}
+			<font size="3" color="gray"><b>차량명 | ${vo.name }</b></font>
 			</td>
 		</c:forEach>
 		</tr>

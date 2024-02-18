@@ -35,8 +35,8 @@
 			</tr>
 			<tr>
 					<td align="center" colspan="11">
-						<input type="button" value="홈" onclick="location.href='${ctx}/main.do'" /> &nbsp;&nbsp;&nbsp;
-						<input type="button" value="차량 예약하기" onclick="location.href='${ctx}/carList.do'" />
+						<input type="button" class="custom-btn btn-7" value="홈" onclick="location.href='${ctx}/main.do'" /> &nbsp;&nbsp;&nbsp;
+						<input type="button" class="custom-btn btn-7"  value="차량 예약하기" onclick="location.href='${ctx}/carList.do'" />
 					</td>
 			</tr>
 		</table>
