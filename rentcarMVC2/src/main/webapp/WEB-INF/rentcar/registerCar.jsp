@@ -30,7 +30,14 @@
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 차량 종류 </td>
-				<td width="180"> <input type="number" name="category" size="15" required/> </td>
+				<td width="180"> 
+				<select name="category">
+						<option value="1">소형</option>
+						<option value="2">중형</option>
+						<option value="3">대형</option>
+				</select>
+			<!-- 	<input type="number" name="category" size="15" required/>  -->
+				</td>
 			</tr>
 			<tr height="40">
 				<td width="120" align="center"> 렌트 가격 </td>

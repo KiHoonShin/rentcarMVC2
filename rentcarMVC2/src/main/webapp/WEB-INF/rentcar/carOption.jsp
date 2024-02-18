@@ -50,28 +50,28 @@
 				<td width="250" align="center">보험적용</td>
 				<td width="250" align="center"><select name="usein">
 						<option value="1">적용(1일 1만원)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td width="250" align="center">Wifi 적용</td>
 				<td width="250" align="center"><select name="usewifi">
 						<option value="1">적용(1일 1만원)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td width="250" align="center">네비게이션 적용</td>
 				<td width="250" align="center"><select name="usenavi">
 						<option value="1">적용(무료)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td width="250" align="center">베이비시트 적용</td>
 				<td width="250" align="center"><select name="useseat">
 						<option value="1">적용(1일 1만원)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 				</select></td>
 			</tr>
 			<tr>

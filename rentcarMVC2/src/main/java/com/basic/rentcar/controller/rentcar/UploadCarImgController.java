@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.util.alertUtil;
 import com.basic.rentcar.vo.Rentcar;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -67,7 +68,8 @@ public class UploadCarImgController implements Controller{
 		Rentcar r = new Rentcar(name, category, price, usepeople, total_qty, company, img, info);
 		RentCarDAO.getInstance().insertCar(r);
 		
-		return "redirect:"+ctx+"/main.do";
+		alertUtil.alertAndGo(response, name + " 차량 등록 완료", ctx+"/main.do");
+		return null;
 	}
 	
 }

@@ -140,6 +140,24 @@ public class UserDAO {
 		}
 	}
 	
+	public String findPw(String id , String email) {
+		getConnect();
+		String sql = "select * from member where id = ? and email = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, email);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				return rs.getString("pw");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return null;
+	}
 	
 	private void dbClose() {
 		if(conn != null)

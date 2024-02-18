@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	margin-top : 120px;
+ 
+</style>
 <body>
 	<table>
 		<tr height="70">

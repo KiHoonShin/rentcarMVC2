@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	table {
+		  display: grid;
+ 	 place-items: center;
+	}
+</style>
 <body>
 		<table>
 		<tr height="100">

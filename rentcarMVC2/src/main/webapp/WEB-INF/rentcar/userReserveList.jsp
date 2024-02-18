@@ -72,7 +72,8 @@
 			<td width="150" align="center">${vo.dday }</td>
 			<c:forEach var = "rentcar" items = "${rentcarList }">
 			<c:if test = "${vo.no eq rentcar.no }">
-			<td width="100" align="center">${rentcar.price } 원</td>
+			<td width="100" align="center">${(rentcar.price  * vo.dday * vo.qty ) + ( (vo.usein*10000 + vo.usewifi*10000 + vo.useseat*10000) * vo.dday * vo.qty)} 원</td>
+<%-- 			<td width="100" align="center">${rentcar.price } 원</td> --%>
 			</c:if>
 			</c:forEach>
 			<%-- <td width="100" align="center">${vo.price } 원</td> --%>
