@@ -9,8 +9,11 @@
 <title>Insert title here</title>
 </head>
 <style>
-	margin-top : 120px;
- 
+a {
+	color : black;
+	text-decoration: none;
+}
+	
 </style>
 <body>
 	<table>
