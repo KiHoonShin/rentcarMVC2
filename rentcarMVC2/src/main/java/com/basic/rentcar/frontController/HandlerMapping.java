@@ -37,7 +37,6 @@ public class HandlerMapping {
 		mappings.put("/insertCar.do", new InsertCarController());
 		mappings.put("/deleteUser.do", new DeleteUserController());
 		mappings.put("/findPw.do", new FindPwController());
-		
 	}
 	
 	public Controller getController(String key) {

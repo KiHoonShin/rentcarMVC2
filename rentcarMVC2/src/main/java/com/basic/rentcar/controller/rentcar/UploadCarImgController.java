@@ -70,6 +70,7 @@ public class UploadCarImgController implements Controller{
 		
 		alertUtil.alertAndGo(response, name + " 차량 등록 완료", ctx+"/main.do");
 		return null;
+//		return "redirect:"+ctx+"/main.do";
 	}
 	
 }

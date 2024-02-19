@@ -159,6 +159,26 @@ public class UserDAO {
 		return null;
 	}
 	
+	
+	public String deleteCheckPw(String id) {
+		getConnect();
+		String sql = "select * from member where id = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				return rs.getString("pw");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return null;
+	}
+	
+	
 	private void dbClose() {
 		if(conn != null)
 			try {
