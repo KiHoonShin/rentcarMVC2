@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -178,6 +179,32 @@ public class UserDAO {
 		return null;
 	}
 	
+	public User getOneUser(String id2){
+		getConnect();
+		String sql = "select * from member where id = ?";
+		User u = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id2);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String pw = rs.getString("pw");
+				String email = rs.getString("email");
+				String tel = rs.getString("tel");
+				String hobby = rs.getString("hobby");
+				String job = rs.getString("job");
+				String age = rs.getString("age");
+				String info = rs.getString("info");
+				u = new User(0, id, pw, email, tel, hobby, job, age, info);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return u;
+	}
 	
 	private void dbClose() {
 		if(conn != null)

@@ -16,6 +16,7 @@ import com.basic.rentcar.controller.user.JoinUserController;
 import com.basic.rentcar.controller.user.LoginCheckController;
 import com.basic.rentcar.controller.user.LoginOutController;
 import com.basic.rentcar.controller.user.MainController;
+import com.basic.rentcar.controller.user.UserInfoController;
 
 public class HandlerMapping {
 	private HashMap<String, Controller> mappings;
@@ -37,6 +38,7 @@ public class HandlerMapping {
 		mappings.put("/insertCar.do", new InsertCarController());
 		mappings.put("/deleteUser.do", new DeleteUserController());
 		mappings.put("/findPw.do", new FindPwController());
+		mappings.put("/userInfo.do", new UserInfoController());
 	}
 	
 	public Controller getController(String key) {

@@ -116,7 +116,7 @@ a {
             </label> -->
             <input type="submit" value="Login">
         </form>
-        <a href="${ctx }" class= "find"> 비밀번호 찾기 </a>
+        <a href="${ctx }/findPw.do" class= "find"> 비밀번호 찾기 </a>
     </div>
     </div>
     <%@include file = "../parts/footer.jsp" %>

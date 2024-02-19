@@ -117,7 +117,8 @@ transform:scale(1.05);
 				${log}님
 				</div>
 				<button class="custom-btn btn-7" onclick="location.href='${ctx}/logInOut.do'"> 로그아웃 </button> 
-				<button class="custom-btn btn-7" onclick="location.href='${ctx}/deleteUser.do'"> 회원탈퇴 </button>
+				<button class="custom-btn btn-7" onclick="location.href='${ctx}/userInfo.do'"> 내 정보 </button>
+				<%-- <button class="custom-btn btn-7" onclick="location.href='${ctx}/deleteUser.do'"> 회원탈퇴 </button> --%>
 			<c:if test = "${log == 'admin' }">
 			<button class="custom-btn btn-7" onclick="location.href='${ctx}/insertCar.do'"> 차량 등록 </button> 
 			</c:if>
